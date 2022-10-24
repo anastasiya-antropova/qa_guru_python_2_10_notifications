@@ -14,7 +14,7 @@ def test_successful():
         "browserVersion": "100.0",
         "selenoid:options": {
             "enableVNC": True,
-            "enableVideo": False
+            "enableVideo": True #True если нужно видео
         }
     }
 
@@ -62,6 +62,6 @@ def test_successful():
         # browser.element(".table-responsive").should(
         #     have.texts(first_name, last_name, "alex@egorov.com", "Some street 1"))
 
-    attach.add_html(browser)
-    attach.add_screenshot(browser)
-    attach.add_logs(browser)
+    attach.add_html(browser) #вложение
+    attach.add_screenshot(browser) #вложение
+    attach.add_logs(browser) #вложение
