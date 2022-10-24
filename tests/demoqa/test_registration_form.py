@@ -65,3 +65,4 @@ def test_successful():
     attach.add_html(browser) #вложение
     attach.add_screenshot(browser) #вложение
     attach.add_logs(browser) #вложение
+    attach.add_video(browser)
