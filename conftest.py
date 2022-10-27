@@ -4,7 +4,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selene import Browser, Config
-from dotenv import load_dotenv
+from dotenv import load_dotenv #библиотека секретн
 
 from utils import attach
 
@@ -14,6 +14,8 @@ DEFAULT_BROWSER_VERSION = "100.0"
 def pytest_addoption(parser):
     parser.addoption(
         '--browser_version',
+#        help('Браузер, в котором будут запущены тесты'),
+#        choices=['firefox', 'chrome'],
         default='100.0'
     )
 
@@ -30,6 +32,7 @@ def setup_browser(request):
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
+        #"browserVersion":"100.0",
         "browserVersion": browser_version,
         "selenoid:options": {
             "enableVNC": True,
@@ -43,6 +46,7 @@ def setup_browser(request):
 
     driver = webdriver.Remote(
         command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
+        #command_executor=f"https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options
     )
     browser = Browser(Config(driver))
